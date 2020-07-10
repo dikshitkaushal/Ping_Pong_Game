@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveBall : MonoBehaviour {
-
+public class tytyt : MonoBehaviour
+{
     Vector3 startpos;
     Rigidbody2D rb;
     float force = 400f;
@@ -21,7 +21,7 @@ public class MoveBall : MonoBehaviour {
     {
         this.transform.position = startpos;
         rb.velocity = Vector3.zero;
-        Vector3 dir = new Vector3(Random.Range(100, 300), Random.Range(-100, 100), 0).normalized;
+        Vector3 dir = new Vector3(Random.Range(100,200), Random.Range(-100, 100), 0).normalized;
         rb.AddForce(dir * force);
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -29,6 +29,7 @@ public class MoveBall : MonoBehaviour {
         if (collision.gameObject.tag == "backwall")
         {
             blop.Play();
+            Reset();
         }
         else
         {
@@ -38,9 +39,6 @@ public class MoveBall : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            Reset();
-        }
+        
     }
 }
